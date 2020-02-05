@@ -33,7 +33,7 @@ namespace Portfolio.Controllers
         public IActionResult EducationEdit(Guid ID)
         {
             Education education = repo.list.education.Find((current) => current.ID == ID);
-            return View(education);
+            return View(education != null ? education : new Education());
         }
         [HttpPost]
         public IActionResult EducationEdit(Education education)
@@ -41,7 +41,12 @@ namespace Portfolio.Controllers
             if (ModelState.IsValid)
             {
                 int index = repo.list.education.FindIndex((current) => current.ID == education.ID);
-                repo.list.education[index] = education;
+                if (index != -1) repo.list.education[index] = education;
+                else
+                {
+                    education.ID = Guid.NewGuid();
+                    repo.list.education.Add(education);
+                }
                 return RedirectToAction("Education");
             }
             return View(education);
