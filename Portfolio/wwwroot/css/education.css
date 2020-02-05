@@ -1,0 +1,12 @@
+﻿.order {
+    border-radius: 0;
+    font-size:1.5em;
+}
+
+.order:hover {
+    background: red;
+}
+
+.target > .row {
+    padding: 1.2em 0;
+}

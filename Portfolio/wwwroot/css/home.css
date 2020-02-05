@@ -1,0 +1,22 @@
+﻿#mainDiv {
+    margin-top:70px;
+}
+
+.social {
+    font-size: 3em;
+}
+
+.social:hover {
+    background: red;
+}
+
+.photo {
+    width: 250px;
+    height: 250px;
+    background: red;
+    margin: 30px auto 10px
+}
+
+@media (max-width: 1150px) {
+    
+}

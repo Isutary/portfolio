@@ -1,0 +1,36 @@
+﻿@model Home
+
+<div style="margin-top:70px">
+    <div class="row justify-content-center p-3">
+        <div class="col-md-10">
+            <table class="table table-striped">
+                <thead class="bg-dark text-light">
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Facebook</th>
+                        <th scope="col">GitHub</th>
+                        <th scope="col">LinkedIn</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody class="bg-light">
+                    <tr>
+                        <td>@Model.Title</td>
+                        <td>@Model.Description</td>
+                        <td>@Model.Image</td>
+                        <td>@Model.FacebookLink</td>
+                        <td>@Model.GithubLink</td>
+                        <td>@Model.LinkedinLink</td>
+                        <td>
+                            <form asp-action="HomeEdit" method="get" class="mb-2">
+                                <input type="submit" class="btn btn-primary btn-block" value="Edit" />
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

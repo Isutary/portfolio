@@ -1,0 +1,48 @@
+﻿@model Home
+
+@section Stylesheet {
+    <link rel="stylesheet" asp-href-include="/css/home.css" asp-append-version=true />
+}
+<div class="row justify-content-center fill-vh">
+    <div class="col-md-5 bg-success p-5" id="mainDiv">
+        <span class="display-4"> Contact </span>
+        <form asp-action="HomeEdit" method="post" novalidate>
+            <div class="form-group">
+                <label asp-for="Title"></label>
+                <div><span asp-validation-for="Title" class="text-danger"></span></div>
+                <input asp-for="Title" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <div><span asp-validation-for="Description" class="text-danger"></span></div>
+                <textarea asp-for="Description" class="form-control" rows="6"></textarea>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image"></label>
+                <div><span asp-validation-for="Image" class="text-danger"></span></div>
+                <input asp-for="Image" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="FacebookLink"></label>
+                <div><span asp-validation-for="FacebookLink" class="text-danger"></span></div>
+                <input asp-for="FacebookLink" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="GithubLink"></label>
+                <div><span asp-validation-for="GithubLink" class="text-danger"></span></div>
+                <input asp-for="GithubLink" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="LinkedinLink"></label>
+                <div><span asp-validation-for="LinkedinLink" class="text-danger"></span></div>
+                <input asp-for="LinkedinLink" class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-lg btn-primary">Save</button>
+            <a class="btn btn-lg btn-danger text-light" asp-action="Home">Cancel</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script asp-src-include="/js/home.js" asp-append-version=true></script>
+}

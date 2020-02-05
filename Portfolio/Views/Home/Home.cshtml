@@ -1,0 +1,36 @@
+﻿@model Home
+
+@section Stylesheet {
+    <link rel="stylesheet" asp-href-include="/css/home.css" asp-append-version=true />
+}
+
+<div class="row justify-content-center fill-vh">
+    <div class="col-md-8" id="mainDiv" style="background:red;">
+        <div class="row fill-container">
+            <div class="col-md-6 p-4 bg-light">
+                <span class="display-4"> @Model.Title </span>
+                <div class="text-justify p-2 lead">
+                    @Model.Description
+                </div>
+            </div>
+            <div class="col-md-6 bg-primary text-center p-1">
+                <div class="photo">
+
+                </div>
+                <a class="btn btn-social-icon btn-facebook social" href="@Model.FacebookLink">
+                    <span class="fa fa-facebook"></span>
+                </a>
+                <a class="btn btn-social-icon btn-github social" href="@Model.GithubLink">
+                    <span class="fa fa-github"></span>
+                </a>
+                <a class="btn btn-social-icon btn-linkedin social" href="@Model.LinkedinLink">
+                    <span class="fa fa-linkedin"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script asp-src-include="/js/home.js" asp-append-version=true></script>
+}

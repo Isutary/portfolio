@@ -1,0 +1,40 @@
+﻿@model List<Contact>
+
+<div style="margin-top:70px">
+    <div class="row justify-content-center p-3">
+        <div class="col-md-10">
+            <table class="table table-dark">
+                <thead class="bg-dark text-light">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Message</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody class="bg-light">
+                    @for (int i = Model.Count-1; i >= 0; i--)
+                    {
+                        <tr class="alert @(Model[i].isRead ? "alert-primary" : "alert-danger")">
+                            <td>@(Model.Count - i)</td>
+                            <td>@Model[i].Name</td>
+                            <td>@Model[i].Email</td>
+                            <td>@Model[i].Message</td>
+                            <td>
+                                <form asp-action="ContactEdit" method="post" class="mb-2">
+                                    <input type="hidden" name="ID" value="@Model[i].ID" />
+                                    <input type="submit" class="btn btn-primary btn-block" value="Check" />
+                                </form>
+                                <form asp-action="ContactDelete" method="post">
+                                    <input type="hidden" name="ID" value="@Model[i].ID" />
+                                    <input type="submit" class="btn btn-danger btn-block" value="Delete" />
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
