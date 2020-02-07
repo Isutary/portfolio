@@ -8,8 +8,9 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Message</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">GitHub</th>
+                        <th scope="col">Website</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -17,17 +18,18 @@
                     @for (int i = 0; i < Model.Count; i++)
                     {
                         <tr>
-                            <td>empty</td>
-                            <td>empty</td>
-                            <td>empty</td>
-                            <td>empty</td>
+                            <td>@(i + 1)</td>
+                            <td>@Model[i].Title</td>
+                            <td>@Model[i].Description</td>
+                            <td>@Model[i].GithubLink</td>
+                            <td>@Model[i].Website</td>
                             <td>
-                                <form asp-action="Edit" method="post" class="mb-2">
-                                    <input type="hidden" name="id" value="" />
+                                <form asp-action="ProjectsEdit" method="get" class="mb-2">
+                                    <input type="hidden" name="id" value="@Model[i].ID" />
                                     <input type="submit" class="btn btn-primary btn-block" value="Edit" />
                                 </form>
-                                <form asp-action="Delete" method="post">
-                                    <input type="hidden" name="id" value="" />
+                                <form asp-action="ProjectsDelete" method="post">
+                                    <input type="hidden" name="id" value="@Model[i].ID" />
                                     <input type="submit" class="btn btn-danger btn-block" value="Delete" />
                                 </form>
                             </td>
@@ -36,5 +38,8 @@
                 </tbody>
             </table>
         </div>
+    </div>
+    <div style="position:fixed;right:50px;top:150px">
+        <a asp-action="ProjectsEdit" class="btn btn-light btn-lg">Add</a>
     </div>
 </div>

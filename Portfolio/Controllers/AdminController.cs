@@ -61,6 +61,34 @@ namespace Portfolio.Controllers
         /////   EDUCATION END   /////
         /////   PROJECTS START  /////
         public IActionResult Projects() => View(repo.list.projects);
+        public IActionResult ProjectsEdit(Guid ID)
+        {
+            Projects projects = repo.list.projects.Find((current) => current.ID == ID);
+            return View(projects != null ? projects : new Projects());
+        }
+        [HttpPost]
+        public IActionResult ProjectsEdit(Projects projects)
+        {
+            if (ModelState.IsValid)
+            {
+                int index = repo.list.projects.FindIndex((current) => current.ID == projects.ID);
+                if (index != -1) repo.list.projects[index] = projects;
+                else
+                {
+                    projects.ID = Guid.NewGuid();
+                    repo.list.projects.Add(projects);
+                }
+                return RedirectToAction("Projects");
+            }
+            return View(projects);
+        }
+        [HttpPost]
+        public IActionResult ProjectsDelete(Guid ID)
+        {
+            Projects projects = repo.list.projects.Find((current) => current.ID == ID);
+            repo.list.projects.Remove(projects);
+            return RedirectToAction("Projects");
+        }
         /////   PROJECTS END    /////
         /////   CONTACT START    /////
         public IActionResult Contact() => View(repo.list.contact);

@@ -61,6 +61,78 @@ namespace Portfolio.Models
                 },
                 projects = new List<Projects>
                 {
+                    new Projects()
+                    {
+                        ID = Guid.NewGuid(),
+                        Title = "x-o",
+                        Description = "Simple x-o built in python using turtle for animations. Maybe the most inefficient way to build x-o but it was my first application that wasn't console based so I'm proud of it.",
+                        GithubLink = "https://github.com/Isutary/x-o",
+                        Website = "",
+                    },
+                    new Projects()
+                    {
+                        ID = Guid.NewGuid(),
+                        Title = "heap-bst",
+                        Description = "Binary search tree that maintains balance by maintaining heap property relative to randomly assigned weights to each node.",
+                        GithubLink = "https://github.com/Isutary/heap-bst",
+                        Website = "",
+                    },
+                    new Projects()
+                    {
+                        ID = Guid.NewGuid(),
+                        Title = "polynomial-calculator",
+                        Description = "Calculator for polynomials.",
+                        GithubLink = "",
+                        Website = "",
+                    },
+                    new Projects()
+                    {
+                        ID = Guid.NewGuid(),
+                        Title = "dfa",
+                        Description = "Program that test whether deterministic finite automaton(DFA) will accept given string or not.",
+                        GithubLink = "",
+                        Website = "",
+                    },
+                    new Projects()
+                    {
+                        ID = Guid.NewGuid(),
+                        Title = "hash-table",
+                        Description = "Hash table implementation in JavaScript.",
+                        GithubLink = "https://github.com/Isutary/hash-table",
+                        Website = "",
+                    },
+                    new Projects()
+                    {
+                        ID = Guid.NewGuid(),
+                        Title = "tft-team-builder",
+                        Description = "Simple Teamfight Tactics team builder.",
+                        GithubLink = "",
+                        Website = "",
+                    },
+                    new Projects()
+                    {
+                        ID = Guid.NewGuid(),
+                        Title = "tft-team-builder-react",
+                        Description = "The Teamfight tactis team builder built using React.js.",
+                        GithubLink = "https://github.com/Isutary/tft-team-builder-react",
+                        Website = "https://tft-team-builder.herokuapp.com/",
+                    },
+                    new Projects()
+                    {
+                        ID = Guid.NewGuid(),
+                        Title = "simple-quiz",
+                        Description = "Simple quiz app",
+                        GithubLink = "",
+                        Website = "",
+                    },
+                    new Projects()
+                    {
+                        ID = Guid.NewGuid(),
+                        Title = "responsive-nav-react",
+                        Description = "Responsive navigation built in React.js.",
+                        GithubLink = "",
+                        Website = "",
+                    },
                 },
                 contact = new List<Contact>
                 {

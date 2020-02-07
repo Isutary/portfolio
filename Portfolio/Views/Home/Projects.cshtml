@@ -1,36 +1,52 @@
-﻿<!-- development only -->
+﻿@model List<Projects>
+
 @section Stylesheet {
-    <link rel="stylesheet" asp-href-include="/css/projects.css" />
+    <link rel="stylesheet" asp-href-include="/css/home.css" asp-append-version=true />
 }
 <div id="target" class="target" style="margin-top:70px">
-    @for (int i = 0; i < 5; i++)
+    @for (int i = 0; i < Model.Count; i++)
     {
-        <div class="row justify-content-center pt-4 pb-4">
-            <div class="col-md-8" style="background:red;">
+        <div class="row justify-content-center">
+            <div class="col-md-7">
                 <div class="row fill-container">
-                    <div class="col-md-4 p-4 bg-light">
-                        <span class="display-4"> Edib Šupić </span>
-                        <div class="text-justify p-2 lead">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis erat quis dui lobortis luctus.
-                            Vivamus nec lacus in nisl condimentum fringilla vel quis tortor. Nulla facilisi. Sed ultrices
-                            vitae turpis sagittis facilisis. Phasellus aliquet leo vel imperdiet laoreet. Curabitur viverra
-                            finibus velit, at bibendum libero eleifend eget. Pellentesque sed scelerisque ipsum, nec malesuada leo.
+                    <div class="col-md-6 text-center">
+                        <div class="m-2 bg-danger">
+                            <span class="display-4">@Model[i].Title</span>
+                            <div class="text-justify p-4 lead">
+                                @Model[i].Description
+                            </div>
+                            <a class="btn btn-social-icon btn-github social" href="@Model[i].GithubLink" target="_blank">
+                                <span class="fa fa-github"></span>
+                            </a>
+                            @if (@Model[i].Website != "")
+                            {
+                                <a class="btn btn-social-icon btn-github social" href="@Model[i].Website" target="_blank">
+                                    <span class="fas fa-external-link-alt"></span>
+                                </a>
+                            }
                         </div>
                     </div>
-                    <div class="col-md-8 bg-primary text-center p-1">
-                        <div class="photo">
-
+                    @if (i + 1 < Model.Count)
+                    {
+                        i++;
+                        <div class="col-md-6 text-center">
+                            <div class="m-2 bg-danger">
+                                <span class="display-4">@Model[i].Title</span>
+                                <div class="text-justify p-4 lead">
+                                    @Model[i].Description
+                                </div>
+                                <a class="btn btn-social-icon btn-github social" href="@Model[i].GithubLink" target="_blank">
+                                    <span class="fa fa-github"></span>
+                                </a>
+                                @if (Model[i].Website != "")
+                                {
+                                    <a class="btn btn-social-icon btn-github social" href="@Model[i].Website" target="_blank">
+                                        <span class="fas fa-external-link-alt"></span>
+                                    </a>
+                                }
+                            </div>
                         </div>
-                        <a class="btn btn-social-icon btn-facebook social">
-                            <span class="fa fa-facebook"></span>
-                        </a>
-                        <a class="btn btn-social-icon btn-github social">
-                            <span class="fa fa-github"></span>
-                        </a>
-                        <a class="btn btn-social-icon btn-linkedin social">
-                            <span class="fa fa-linkedin"></span>
-                        </a>
-                    </div>
+                    }
                 </div>
             </div>
         </div>

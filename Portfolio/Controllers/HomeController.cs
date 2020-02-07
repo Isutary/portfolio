@@ -22,7 +22,7 @@ namespace Portfolio.Controllers
         public IActionResult Projects() 
         {
             ViewBag.Current = "Projects";
-            return View(); 
+            return View(repo.list.projects); 
         }
         public IActionResult Education()
         {
