@@ -8,6 +8,7 @@ namespace Portfolio.Models
 {
     public class Home
     {
+        public Guid ID { get; set; }
         //[Required]
         public string Title { get; set; }
         //[Required]

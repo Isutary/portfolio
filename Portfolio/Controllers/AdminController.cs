@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Portfolio.Models;
 using System;
 using System.Collections.Generic;
@@ -7,46 +9,48 @@ using System.Threading.Tasks;
 
 namespace Portfolio.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
-        private IRepository repo;
-        public AdminController(IRepository Repo)
+        private PortfolioDbContext context;
+        public AdminController(PortfolioDbContext Context)
         {
-            repo = Repo;
+            context = Context;
         }
         /////   HOME START  /////
-        public IActionResult Home() => View(repo.list.home);
-        public IActionResult HomeEdit() => View(repo.list.home);
+        public IActionResult Home() => View((from row in context.Homes select row).First());
+        public IActionResult HomeEdit() => View((from row in context.Homes select row).First());
         [HttpPost]
         public IActionResult HomeEdit(Home home)
         {
             if (ModelState.IsValid)
             {
-                repo.list.home = home;
+                context.Homes.Update(home);
+                context.SaveChanges();
                 return RedirectToAction("Home");
             }
             return View(home);
         }
         /////   HOME END    /////
         /////   EDUCATION START  /////
-        public IActionResult Education() => View(repo.list.education);
+        public IActionResult Education() => View((from row in context.Educations select row).ToList());
         public IActionResult EducationEdit(Guid ID)
         {
-            Education education = repo.list.education.Find((current) => current.ID == ID);
-            return View(education != null ? education : new Education());
+            Education education = (from row in context.Educations where row.ID == ID select row).FirstOrDefault();
+            return View(education ?? new Education());
         }
         [HttpPost]
         public IActionResult EducationEdit(Education education)
         {
             if (ModelState.IsValid)
             {
-                int index = repo.list.education.FindIndex((current) => current.ID == education.ID);
-                if (index != -1) repo.list.education[index] = education;
+                if (education != null) context.Educations.Update(education);
                 else
                 {
                     education.ID = Guid.NewGuid();
-                    repo.list.education.Add(education);
+                    context.Educations.Add(education);
                 }
+                context.SaveChanges();
                 return RedirectToAction("Education");
             }
             return View(education);
@@ -54,30 +58,31 @@ namespace Portfolio.Controllers
         [HttpPost] 
         public IActionResult EducationDelete(Guid ID)
         {
-            Education education = repo.list.education.Find((current) => current.ID == ID);
-            repo.list.education.Remove(education);
+            Education education = (from row in context.Educations where row.ID == ID select row).FirstOrDefault();
+            context.Educations.Remove(education);
+            context.SaveChanges();
             return RedirectToAction("Education");
         }
         /////   EDUCATION END   /////
         /////   PROJECTS START  /////
-        public IActionResult Projects() => View(repo.list.projects);
+        public IActionResult Projects() => View((from row in context.Projects select row).ToList());
         public IActionResult ProjectsEdit(Guid ID)
         {
-            Projects projects = repo.list.projects.Find((current) => current.ID == ID);
-            return View(projects != null ? projects : new Projects());
+            Projects projects = (from row in context.Projects where row.ID == ID select row).FirstOrDefault();
+            return View(projects ?? new Projects());
         }
         [HttpPost]
         public IActionResult ProjectsEdit(Projects projects)
         {
             if (ModelState.IsValid)
             {
-                int index = repo.list.projects.FindIndex((current) => current.ID == projects.ID);
-                if (index != -1) repo.list.projects[index] = projects;
+                if (projects != null) context.Projects.Update(projects);
                 else
                 {
                     projects.ID = Guid.NewGuid();
-                    repo.list.projects.Add(projects);
+                    context.Projects.Add(projects);
                 }
+                context.SaveChanges();
                 return RedirectToAction("Projects");
             }
             return View(projects);
@@ -85,25 +90,30 @@ namespace Portfolio.Controllers
         [HttpPost]
         public IActionResult ProjectsDelete(Guid ID)
         {
-            Projects projects = repo.list.projects.Find((current) => current.ID == ID);
-            repo.list.projects.Remove(projects);
+            Projects projects = (from row in context.Projects where row.ID == ID select row).FirstOrDefault();
+            context.Projects.Remove(projects);
+            context.SaveChanges();
             return RedirectToAction("Projects");
         }
         /////   PROJECTS END    /////
-        /////   CONTACT START    /////
-        public IActionResult Contact() => View(repo.list.contact);
+        /////   CONTACT START    ////
+        public IActionResult Contact() => View((from row in context.Contacts select row).ToList());
         [HttpPost]
         public IActionResult ContactEdit(Guid ID)
         {
-            int index = repo.list.contact.FindIndex((current) => current.ID == ID);
-            repo.list.contact[index].isRead = repo.list.contact[index].isRead ? false : true;
+            Contact contact = (from row in context.Contacts where row.ID == ID select row).FirstOrDefault();
+            //int index = repo.list.contact.FindIndex((current) => current.ID == ID);
+            contact.isRead = contact.isRead ? false : true;
+            context.SaveChanges();
+            //repo.list.contact[index].isRead = repo.list.contact[index].isRead ? false : true;
             return RedirectToAction("Contact");
         }
         [HttpPost]
         public IActionResult ContactDelete(Guid ID)
         {
-            Contact contact = repo.list.contact.Find((current) => current.ID == ID);
-            repo.list.contact.Remove(contact);
+            Contact contact = (from row in context.Contacts where row.ID == ID select row).FirstOrDefault();
+            context.Contacts.Remove(contact);
+            context.SaveChanges();
             return RedirectToAction("Contact");
         }
         /////   CONTACT END    /////

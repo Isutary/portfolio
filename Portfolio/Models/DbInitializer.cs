@@ -1,24 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Portfolio.Models
 {
-    public class PortfolioContext : IRepository
+    public static class DbInitializer
     {
-        public FakeDbModel list { get; }
-        public PortfolioContext()
+        public static void EnsurePopulated(IApplicationBuilder app)
         {
-            list = new FakeDbModel() {
-                home = new Home {
+            PortfolioDbContext context = app.ApplicationServices.GetRequiredService<PortfolioDbContext>();
+            context.Database.Migrate();
+
+            if (!context.Homes.Any())
+            {
+                var homes = new Home[]
+                {
+                new Home {
                     ID = Guid.NewGuid(),
                     Title = "Edib Šupić",
                     Image = "",
                     Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis erat quis dui lobortis luctus. Vivamus nec lacus in nisl condimentum fringilla vel quis tortor.Nulla facilisi.Sed ultrices vitae turpis sagittis facilisis.Phasellus aliquet leo vel imperdiet laoreet.Curabitur viverra finibus velit, at bibendum libero eleifend eget.Pellentesque sed scelerisque ipsum, nec malesuada leo."
-                },
-                education = new List<Education>
+                }
+                };
+                foreach (Home h in homes)
                 {
+                    context.Homes.Add(h);
+                }
+                context.SaveChanges();
+            }
+            if (!context.Educations.Any())
+            {
+                var educations = new Education[]
+                    {
                     new Education()
                     {
                         ID = Guid.NewGuid(),
@@ -59,9 +75,17 @@ namespace Portfolio.Models
                         Image = "",
                         OrderLink = "",
                     },
-                },
-                projects = new List<Projects>
+                    };
+                foreach (Education e in educations)
                 {
+                    context.Educations.Add(e);
+                }
+                context.SaveChanges();
+            }
+            if (!context.Projects.Any())
+            {
+                var projects = new Projects[]
+                    {
                     new Projects()
                     {
                         ID = Guid.NewGuid(),
@@ -134,9 +158,17 @@ namespace Portfolio.Models
                         GithubLink = "",
                         Website = "",
                     },
-                },
-                contact = new List<Contact>
+                    };
+                foreach (Projects p in projects)
                 {
+                    context.Projects.Add(p);
+                }
+                context.SaveChanges();
+            }
+            if (!context.Contacts.Any())
+            {
+                var contacts = new Contact[]
+                    {
                     new Contact
                     {
                         ID = Guid.NewGuid(),
@@ -154,33 +186,28 @@ namespace Portfolio.Models
                         isRead = false
                     },
                     new Contact
-                    { 
-                        ID = Guid.NewGuid(), 
-                        Name = "Anes", 
-                        Email = "anes@gmail.com", 
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Anes",
+                        Email = "anes@gmail.com",
                         Message = "Ut rutrum ligula quis massa dapibus commodo a id ipsum. Nunc in condimentum arcu. Nullam ut pellentesque urna, in mattis justo. Pellentesque auctor mi at dolor euismod suscipit. Cras elementum, ex in consectetur rutrum, nisl lectus congue nunc, eget congue orci sapien eu mauris. Nam id purus non ex cursus feugiat nec eget sapien. Suspendisse pellentesque diam nec ipsum fringilla, ac interdum sem dictum. Curabitur porta lobortis eros, sed blandit risus scelerisque quis. Ut risus tortor, faucibus et elit ut, fringilla dapibus mi. Integer a pretium mauris. Donec sit amet consectetur urna.",
                         isRead = false
                     },
                     new Contact
-                    { 
-                        ID = Guid.NewGuid(), 
-                        Name = "Deniz", 
-                        Email = "deniz@yahoo.com", 
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Deniz",
+                        Email = "deniz@yahoo.com",
                         Message = "Enn vehicula elit in lectus condimentum, id rutrum metus pulvinar. Nullam et eros dolor. Nulla vel rutrum tortor, et tempor massa. In molestie efficitur arcu a dictum.",
                         isRead = false
                     },
+                    };
+                foreach (Contact c in contacts)
+                {
+                    context.Contacts.Add(c);
                 }
-            };
+                context.SaveChanges();
+            }
         }
-        public void Add(Contact contact)
-        {
-            //list.Add(contact);
-        }
-        public void Remove(Guid id)
-        {
-            //Contact contact = list.Find((current) => current.ID == id);
-            //list.Remove(contact);
-        }
-
     }
 }

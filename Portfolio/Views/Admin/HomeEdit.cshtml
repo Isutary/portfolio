@@ -7,6 +7,9 @@
     <div class="col-md-5 bg-success p-5" id="mainDiv">
         <span class="display-4"> Contact </span>
         <form asp-action="HomeEdit" method="post" novalidate>
+            <div>
+                <input type="hidden" asp-for="ID" value="@Model.ID" />
+            </div>
             <div class="form-group">
                 <label asp-for="Title"></label>
                 <div><span asp-validation-for="Title" class="text-danger"></span></div>

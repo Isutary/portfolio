@@ -9,25 +9,25 @@ namespace Portfolio.Controllers
 {
     public class HomeController : Controller
     {
-        private IRepository repo;
-        public HomeController(IRepository Repo)
+        private PortfolioDbContext context;
+        public HomeController(PortfolioDbContext Context)
         {
-            repo = Repo;
+            context = Context;
         }
         public IActionResult Home()
         {
             ViewBag.Current = "Home";
-            return View(repo.list.home);
+            return View((from row in context.Homes select row).FirstOrDefault());
         }
         public IActionResult Projects() 
         {
             ViewBag.Current = "Projects";
-            return View(repo.list.projects); 
+            return View((from row in context.Projects select row).ToList()); 
         }
         public IActionResult Education()
         {
             ViewBag.Current = "Education";
-            return View(repo.list.education);
+            return View((from row in context.Educations select row).ToList());
         }
         public IActionResult Contact()
         {
@@ -41,7 +41,8 @@ namespace Portfolio.Controllers
             {
                 contact.ID = Guid.NewGuid();
                 contact.isRead = false;
-                repo.list.contact.Add(contact);
+                context.Contacts.Add(contact);
+                context.SaveChanges();
                 return RedirectToAction("Contact");
             }
             return View();
