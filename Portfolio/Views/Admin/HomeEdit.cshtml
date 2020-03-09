@@ -1,8 +1,9 @@
 ﻿@model Home
-
-@section Stylesheet {
+<!--
+@@section Stylesheet {
     <link rel="stylesheet" asp-href-include="/css/home.css" asp-append-version=true />
 }
+-->
 <div class="row justify-content-center fill-vh">
     <div class="col-md-5 bg-success p-5" id="mainDiv">
         <span class="display-4"> Contact </span>
@@ -23,7 +24,7 @@
             <div class="form-group">
                 <label asp-for="Image"></label>
                 <div><span asp-validation-for="Image" class="text-danger"></span></div>
-                <input asp-for="Image" class="form-control" />
+                <input asp-for="Image" type="file" class="form-control" />
             </div>
             <div class="form-group">
                 <label asp-for="FacebookLink"></label>
@@ -45,7 +46,8 @@
         </form>
     </div>
 </div>
-
-@section Scripts {
+<!--
+@@section Scripts {
     <script asp-src-include="/js/home.js" asp-append-version=true></script>
 }
+-->
