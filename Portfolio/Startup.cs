@@ -46,8 +46,8 @@ namespace Portfolio
                     template: "{controller=home}/{action=home}"
                     );
             });
-            DbInitializer.EnsurePopulated(app);
-            IdentitySeedData.EnsurePopulated(app);
+            //DbInitializer.EnsurePopulated(app);
+            //IdentitySeedData.EnsurePopulated(app);
 
         }
     }

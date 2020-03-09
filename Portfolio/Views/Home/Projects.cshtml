@@ -3,7 +3,7 @@
 @@section Stylesheet {
     <link rel="stylesheet" asp-href-include="/css/home.css" asp-append-version=true />
     <link rel="stylesheet" asp-href-include="/css/projects.css" asp-append-version="true" />
-} 
+}
 -->
 <div id="targetForMargin" class="targetForMargin">
     @for (int i = 0; i < Model.Count; i++)
@@ -17,10 +17,13 @@
                             <div class="text-justify p-4 lead">
                                 @Model[i].Description
                             </div>
-                            <a class="btn btn-social-icon btn-github social" href="@Model[i].GithubLink" target="_blank">
-                                <span class="fa fa-github"></span>
-                            </a>
-                            @if (@Model[i].Website != "")
+                            @if (@Model[i].GithubLink != "" && @Model[i].GithubLink != null)
+                            {
+                                <a class="btn btn-social-icon btn-github social" href="@Model[i].GithubLink" target="_blank">
+                                    <span class="fa fa-github"></span>
+                                </a>
+                            }
+                            @if (@Model[i].Website != "" && @Model[i].Website != null)
                             {
                                 <a class="btn btn-social-icon btn-github social" href="@Model[i].Website" target="_blank">
                                     <span class="fas fa-external-link-alt"></span>
@@ -37,10 +40,13 @@
                                 <div class="text-justify p-4 lead">
                                     @Model[i].Description
                                 </div>
-                                <a class="btn btn-social-icon btn-github social" href="@Model[i].GithubLink" target="_blank">
-                                    <span class="fa fa-github"></span>
-                                </a>
-                                @if (Model[i].Website != "")
+                                @if (@Model[i].GithubLink != "" && @Model[i].GithubLink != null)
+                                {
+                                    <a class="btn btn-social-icon btn-github social" href="@Model[i].GithubLink" target="_blank">
+                                        <span class="fa fa-github"></span>
+                                    </a>
+                                }
+                                @if (Model[i].Website != "" && @Model[i].Website != null)
                                 {
                                     <a class="btn btn-social-icon btn-github social" href="@Model[i].Website" target="_blank">
                                         <span class="fas fa-external-link-alt"></span>

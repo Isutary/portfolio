@@ -40,7 +40,7 @@ namespace Portfolio.Models
                         ID = Guid.NewGuid(),
                         Title = "Pro C# 7 With .NET and .NET Core",
                         Description = "This essential classic title provides a comprehensive foundation in the C# programming language and the frameworks it lives in. Now in its 8th edition, you’ll find all the very latest C# 7.1 and .NET 4.7 features here, along with four brand new chapters on Microsoft’s lightweight, cross-platform framework, .NET Core, up to and including .NET Core 2.0. Coverage of ASP.NET Core, Entity Framework (EF) Core, and more, sits alongside the latest updates to .NET, including Windows Presentation Foundation (WPF), Windows Communication Foundation (WCF), and ASP.NET MVC. Dive in and discover why Pro C# has been a favorite of C# developers worldwide for over 15 years. Gain a solid foundation in object-oriented development techniques, attributes and reflection, generics and collections as well as numerous advanced topics not found in other texts (such as CIL opcodes and emitting dynamic assemblies). With the help of this book you’ll have the confidence to put C# into practice and explore the .NET universe on your own terms.",
-                        Image = "",
+                        Image = "/images/procsharp.jpg",
                         OrderLink = "",
                     },
                     new Education()
@@ -48,7 +48,7 @@ namespace Portfolio.Models
                         ID = Guid.NewGuid(),
                         Title = "Pro ASP.NET Core MVC 2",
                         Description = "HTML5 is more than a markup language—it’s a collection of several independent web standards. Fortunately, this expanded guide covers everything you need in one convenient place. With step-by-step tutorials and real-world examples, HTML5: The Missing Manual shows you how to build web apps that include video tools, dynamic graphics, geolocation, offline features, and responsive layouts for mobile devices.",
-                        Image = "",
+                        Image = "/images/proaspnet.png",
                         OrderLink = "",
                     },
                     new Education()
@@ -56,7 +56,7 @@ namespace Portfolio.Models
                         ID = Guid.NewGuid(),
                         Title = "Learning React Functional Web Development with React and Redux",
                         Description = "If you want to learn how to build efficient user interfaces with React, this is your book. Authors Alex Banks and Eve Porcello show you how to create UIs with this small JavaScript library that can deftly display data changes on large-scale, data-driven websites without page reloads. Along the way, you’ll learn how to work with functional programming and the latest ECMAScript features.",
-                        Image = "",
+                        Image = "/images/learningreact.jpg",
                         OrderLink = "",
                     },
                     new Education()
@@ -64,7 +64,7 @@ namespace Portfolio.Models
                         ID = Guid.NewGuid(),
                         Title = "You Don't Know JS",
                         Description = "No matter how much experience you have with JavaScript, odds are you don't fully understand the language. This concise yet in-depth guide takes you inside scope and closures, two core concepts you need to know to become a more efficient and effective JavaScript programmer. You'll learn how and why they work, and how an understanding of closures can be a powerful part of your development skillset.",
-                        Image = "",
+                        Image = "/images/ydkjs.png",
                         OrderLink = "",
                     },
                     new Education()
@@ -72,7 +72,23 @@ namespace Portfolio.Models
                         ID = Guid.NewGuid(),
                         Title = "CSS: The Missing Manual",
                         Description = "SS lets you create professional-looking websites, but learning its finer points can be tricky—even for seasoned web developers. This fully updated edition provides the most modern and effective tips, tricks, and tutorial-based instruction on CSS available today. Learn how to use new tools such as Flexbox and Sass to build web pages that look great and run fast on any desktop or mobile device. Ideal for casual and experienced designers alike.",
-                        Image = "",
+                        Image = "/images/css3.jpg",
+                        OrderLink = "",
+                    },
+                    new Education()
+                    {
+                        ID = Guid.NewGuid(),
+                        Title = "Eloquent JavaScript",
+                        Description = "SS lets you create professional-looking websites, but learning its finer points can be tricky—even for seasoned web developers. This fully updated edition provides the most modern and effective tips, tricks, and tutorial-based instruction on CSS available today. Learn how to use new tools such as Flexbox and Sass to build web pages that look great and run fast on any desktop or mobile device. Ideal for casual and experienced designers alike.",
+                        Image = "/images/eloquentjs.jpg",
+                        OrderLink = "",
+                    },
+                    new Education()
+                    {
+                        ID = Guid.NewGuid(),
+                        Title = "HTML5: The Missing Manual",
+                        Description = "SS lets you create professional-looking websites, but learning its finer points can be tricky—even for seasoned web developers. This fully updated edition provides the most modern and effective tips, tricks, and tutorial-based instruction on CSS available today. Learn how to use new tools such as Flexbox and Sass to build web pages that look great and run fast on any desktop or mobile device. Ideal for casual and experienced designers alike.",
+                        Image = "/images/html5.jpg",
                         OrderLink = "",
                     },
                     };

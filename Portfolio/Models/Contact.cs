@@ -9,13 +9,13 @@ namespace Portfolio.Models
     public class Contact
     {
         public Guid ID { get; set; }
-        //[Required]
+        [Required]
         public string Name { get; set; }
-        //[Required]
+        [Required]
         [Display(Name = "E-Mail")]
         [EmailAddress]
         public string Email { get; set; }
-        //[Required]
+        [Required]
         public string Message { get; set; }
         public bool isRead { get; set; }
     }
