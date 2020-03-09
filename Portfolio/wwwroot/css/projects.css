@@ -1,1 +1,7 @@
-﻿
+﻿.targetForMargin .margin {
+    margin-bottom: 0.8em !important;
+}
+
+#targetForMargin {
+    padding-top: 90px;
+}

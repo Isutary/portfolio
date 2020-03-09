@@ -9,8 +9,8 @@ using Portfolio.Models;
 namespace Portfolio.Migrations.PortfolioIdentityDb
 {
     [DbContext(typeof(PortfolioIdentityDbContext))]
-    [Migration("20200218212119_Initial")]
-    partial class Initial
+    [Migration("20200224160456_Intial")]
+    partial class Intial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

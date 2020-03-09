@@ -1,16 +1,18 @@
 ﻿@model List<Projects>
-
-@section Stylesheet {
+<!--
+@@section Stylesheet {
     <link rel="stylesheet" asp-href-include="/css/home.css" asp-append-version=true />
-}
-<div id="target" class="target" style="margin-top:70px">
+    <link rel="stylesheet" asp-href-include="/css/projects.css" asp-append-version="true" />
+} 
+-->
+<div id="targetForMargin" class="targetForMargin">
     @for (int i = 0; i < Model.Count; i++)
     {
-        <div class="row justify-content-center">
-            <div class="col-md-7">
-                <div class="row fill-container">
-                    <div class="col-md-6 text-center">
-                        <div class="m-2 bg-danger">
+        <div class="mt-2 mb-2 row justify-content-center">
+            <div class="col-md-7 p-0">
+                <div class="row fill-container text-light">
+                    <div class="col-md-6 text-center margin">
+                        <div class="bg-primary h-100 p-2 shadow">
                             <span class="display-4">@Model[i].Title</span>
                             <div class="text-justify p-4 lead">
                                 @Model[i].Description
@@ -29,8 +31,8 @@
                     @if (i + 1 < Model.Count)
                     {
                         i++;
-                        <div class="col-md-6 text-center">
-                            <div class="m-2 bg-danger">
+                        <div class="col-md-6 text-center margin">
+                            <div class="bg-primary h-100 p-2 shadow">
                                 <span class="display-4">@Model[i].Title</span>
                                 <div class="text-justify p-4 lead">
                                     @Model[i].Description
@@ -52,6 +54,8 @@
         </div>
     }
 </div>
-@section Scripts {
-    <script asp-src-include="/js/education.js" asp-append-version=true></script>
+<!--
+@@section Scripts {
+    <script asp-src-include="/js/projects.js" asp-append-version=true></script>
 }
+-->

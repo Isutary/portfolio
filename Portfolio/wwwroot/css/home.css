@@ -3,20 +3,18 @@
 }
 
 .social {
-    font-size: 3em;
+    color: white !important;
+    font-size: 3em !important;
+    transition: all ease-in-out 350ms;
 }
 
 .social:hover {
-    background: red;
+    color: black !important;
+    background: #f8f9fa;
 }
 
 .photo {
     width: 250px;
     height: 250px;
-    background: red;
     margin: 30px auto 10px
-}
-
-@media (max-width: 1150px) {
-    
 }

@@ -1,12 +1,12 @@
-﻿function removeSelfCenter(x) {
-    if (query.matches) { // If media query matches
-        target.classList.remove("target");
+﻿function addPadding() {
+    var target = document.getElementById("targetForPadding");
+    if (query.matches) { 
+        target.classList.remove("targetForPadding");
     } else {
-        target.classList.add("target");
+        target.classList.add("targetForPadding");
     }
 }
 
-var target = document.getElementById("target");
-var query = window.matchMedia("(max-width: 1150px)")
-removeSelfCenter(query) // Call listener function at run time
-query.addListener(removeSelfCenter) // Attach listener function on state changes
+var query = window.matchMedia("(max-width: 1150px)");
+removeSelfCenter(); 
+query.addListener(removeSelfCenter); 

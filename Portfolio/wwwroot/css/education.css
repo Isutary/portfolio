@@ -1,12 +1,23 @@
 ﻿.order {
     border-radius: 0;
-    font-size:1.5em;
+    font-size: 1.5em;
+    transition: all ease-in-out 350ms;
 }
 
 .order:hover {
-    background: red;
+    color: white;
+    background: #007bff;
 }
 
-.target > .row {
+#targetForPadding {
+    margin-top: 70px;
+}
+
+.targetForPadding > .row {
     padding: 1.2em 0;
+}
+
+.book-photo {
+    min-height: 100%;
+    min-width: 100%
 }

@@ -3,18 +3,20 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" asp-href-include="/css/layout.css" asp-append-version=true />
-    <link rel="stylesheet" asp-href-include="/css/style.css" asp-append-version=true />
-    <link rel="stylesheet" asp-href-include="/lib/font-awesome/css/*" asp-append-version=true />
+    <!-- <link rel="stylesheet" asp-href-include="/css/style.css" asp-append-version=true /> -->
+    <link rel="stylesheet" asp-href-include="/lib/font-awesome/css/*.min.css" asp-append-version=true />
+    <link rel="stylesheet" asp-href-include="/css/final.min.css" asp-append-version=true />
     <!-- development only -->
-    @RenderSection("Stylesheet", required: false)
+    <!--
+    @@RenderSection("Stylesheet", required: false)
+    -->
     <title>@ViewBag.Current</title>
 </head>
 <body>
     <header class="container-fluid sticky-top">
-        <div class="row d-flex">
-            <div class="col-md-4 bg-danger d-flex align-items-end display-4 min-height">
-                <a asp-action="Home" asp-controller="Home" style="text-decoration:none;color:black"> Edib's Portfolio </a>
+        <div class="row d-flex shadow">
+            <div class="col-md-4 bg-primary d-flex align-items-end display-4 min-height">
+                <a asp-action="Home" asp-controller="Home" class="home-link"> Edib's Portfolio </a>
             </div>
             <nav class="col-md-8 min-height bg-light">
                 <ul class="nav nav-tabs nav-fill d-flex align-items-end h-100 h4 font-weight-light">
@@ -34,9 +36,10 @@
             </nav>
         </div>
     </header>
-    <div class="container-fluid fill-vh bg-info" style="margin-top:-70px">
+    <div class="container-fluid fill-vh bg-secondary top-fix">
         @RenderBody()
     </div>
-    @RenderSection("Scripts", required: false)
+    <script asp-src-include="/js/final.min.js" asp-append-version=true></script>
+    <!-- @@RenderSection("Scripts", required: false) -->
 </body>
 </html>

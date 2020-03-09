@@ -1,10 +1,11 @@
 ﻿@model Contact
-
-@section Stylesheet {
+<!--
+@@section Stylesheet {
     <link rel="stylesheet" asp-href-include="/css/home.css" asp-append-version=true />
 }
+-->
 <div class="row justify-content-center fill-vh">
-    <div class="col-md-5 bg-success p-5" id="mainDiv">
+    <div class="col-md-5 bg-primary p-5 shadow text-light rounded-lg align-self-center" id="mainDiv">
         <span class="display-4"> Contact </span>
         <form method="post" novalidate>
             <div class="form-group">
@@ -22,12 +23,12 @@
                 <div><span asp-validation-for="Message" class="text-danger"></span></div>
                 <textarea asp-for="Message" class="form-control" rows="6"></textarea>
             </div>
-            <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+            <button type="submit" class="btn btn-lg btn-light text-dark">Submit</button>
         </form>
-        <a class="btn btn-lg" asp-action="Contact" asp-controller="Admin"> List </a>
     </div>
 </div>
-
-@section Scripts {
+<!--
+@@section Scripts {
     <script asp-src-include="/js/home.js" asp-append-version=true></script>
 }
+-->

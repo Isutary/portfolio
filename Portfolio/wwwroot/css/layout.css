@@ -9,3 +9,17 @@
 .min-height {
     min-height: 70px;
 }
+
+.top-fix {
+    margin-top: -70px
+}
+
+.home-link {
+    text-decoration: none;
+    color: white;
+}
+
+.home-link:hover {
+    text-decoration: none;
+    color: white;
+}

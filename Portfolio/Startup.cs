@@ -43,7 +43,7 @@ namespace Portfolio
             app.UseMvc(routes => {
                 routes.MapRoute(
                     name: "",
-                    template: "{controller=home}/{action=education}"
+                    template: "{controller=home}/{action=home}"
                     );
             });
             DbInitializer.EnsurePopulated(app);

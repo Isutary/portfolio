@@ -1,11 +1,12 @@
 ﻿@model Home
-
-@section Stylesheet {
+<!--
+@@section Stylesheet {
     <link rel="stylesheet" asp-href-include="/css/home.css" asp-append-version=true />
 }
+-->
 
 <div class="row justify-content-center fill-vh">
-    <div class="col-md-8" id="mainDiv" style="background:red;">
+    <div class="col-md-8 shadow align-self-center" id="mainDiv">
         <div class="row fill-container">
             <div class="col-md-6 p-4 bg-light">
                 <span class="display-4"> @Model.Title </span>
@@ -13,8 +14,8 @@
                     @Model.Description
                 </div>
             </div>
-            <div class="col-md-6 bg-primary text-center p-1">
-                <div class="photo">
+            <div class="col-md-6 text-center p-1 bg-primary">
+                <div class="photo  border border-dark">
 
                 </div>
                 <a class="btn btn-social-icon btn-facebook social" href="@Model.FacebookLink">
@@ -30,7 +31,8 @@
         </div>
     </div>
 </div>
-
-@section Scripts {
+<!--
+@@section Scripts {
     <script asp-src-include="/js/home.js" asp-append-version=true></script>
 }
+-->
