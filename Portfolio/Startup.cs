@@ -21,14 +21,13 @@ namespace Portfolio
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<PortfolioDbContext>(options => options.UseMySql(Configuration["Data:PortfolioDb:ConnectionString"]));
-            services.AddDbContext<PortfolioIdentityDbContext>(options => options.UseMySql(Configuration["Data:PortfolioDbIdentity:ConnectionString"]));
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<PortfolioIdentityDbContext>()
-                .AddDefaultTokenProviders();
-            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<PortfolioDbContext>();
-            //services.AddDbContext<AdminDbContext>(options => options.UseMySql(Configuration["Data:PortfolioIdentity:ConnectionString"]));
-            //services.AddIdentity<AdminUser, IdentityRole>().AddEntityFrameworkStores<AdminDbContext>().AddDefaultTokenProviders();
+            //services.AddDbContext<PortfolioDbContext>(options => options.UseMySql(Configuration["Data:PortfolioDb:ConnectionString"]));
+            //services.AddDbContext<PortfolioIdentityDbContext>(options => options.UseMySql(Configuration["Data:PortfolioDbIdentity:ConnectionString"]));
+            
+            services.AddDbContext<PortfolioDbContext>(options => options.UseSqlServer(Configuration["Data:PortfolioDb:ConnectionString"]));
+            services.AddDbContext<PortfolioIdentityDbContext>(options => options.UseSqlServer(Configuration["Data:PortfolioDbIdentity:ConnectionString"]));
+
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<PortfolioIdentityDbContext>().AddDefaultTokenProviders();
             services.AddMvc(options => options.EnableEndpointRouting = false);
         }
 
